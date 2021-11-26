@@ -64,21 +64,27 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           http({
-            url: "/login",
+            url: "login",
             method: "post",
             data: {
               username: this.ruleForm.name,
               password: this.ruleForm.mima,
             },
           }).then((res) => {
-            sessionStorage.setItem("token", res.data.token);
-            console.log(res.data.token);
-            this.$message({
-              message: res.meta.msg,
-              type: "success",
-              duration:2000,
-            })
-            this.$router.push('/home');
+            if (res.data == null) {
+              this.$message({
+                message: "账号或密码错误",
+                type: "warning",
+              });
+            } else {
+              sessionStorage.setItem("token", res.data.token);
+              this.$message({
+                message: res.meta.msg,
+                type: "success",
+                duration: 2000,
+              });
+              this.$router.push("/home");
+            }
           });
         } else {
           console.log("error submit!!");
@@ -105,8 +111,8 @@ export default {
   background-color: #2b4b6b;
   .demo-ruleForm {
     width: 600px;
-    height: 200px;
-    padding-top: 150px;
+    height: 220px;
+    padding-top: 130px;
     padding-right: 40px;
     background-color: #fff;
     border-radius: 5px;
@@ -133,5 +139,8 @@ export default {
   img {
     width: 130px;
   }
+}
+.el-form-item{
+  margin-bottom: 30px;
 }
 </style>
