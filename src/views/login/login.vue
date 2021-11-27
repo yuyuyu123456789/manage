@@ -8,10 +8,10 @@
       class="demo-ruleForm"
     >
       <el-form-item label="用户名" prop="name">
-        <el-input v-model="ruleForm.name" clearable></el-input>
+        <el-input v-model="ruleForm.name"  prefix-icon="el-icon-user-solid" clearable></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="mima">
-        <el-input v-model="ruleForm.mima" show-password></el-input>
+        <el-input v-model="ruleForm.mima" prefix-icon="el-icon-lock" show-password></el-input>
       </el-form-item>
 
       <el-form-item>

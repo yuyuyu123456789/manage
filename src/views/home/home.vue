@@ -16,14 +16,16 @@
         >
           <el-submenu :index="''+item.id" v-for="item in list" :key="item.id">
             <template slot="title">
-              <i class="el-icon-location"></i> 
+              <i :class="lcon[item.order]"></i> 
               <span>{{item.authName}}</span> 
             </template>
               <el-menu-item :index="''+itm.id" 
               v-for="itm in item.children" 
               :key="itm.id"
               :route='{path:"/home/"+itm.path}'
-              >{{itm.authName}}</el-menu-item> 
+              >
+              <i class="el-icon-menu"></i> 
+              {{itm.authName}}</el-menu-item> 
           </el-submenu>
         </el-menu>
 
@@ -43,14 +45,22 @@ export default {
     return {
       list: [],
       isover:true,
-      is:true
+      is:true,
+      lcon:[
+        '',
+        'el-icon-s-custom',
+        'el-icon-s-grid',
+        'el-icon-s-goods',
+        'el-icon-s-order',
+        'el-icon-s-data'
+      ]
     };
   },
   mounted() {
     http({
       url: "menus",
     }).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       this.list = res.data;
     });
   },
@@ -77,7 +87,7 @@ export default {
       text-align: center;
       line-height: 40px;
       color: #fff;
-      background-color: #909399;
+      background-color: #4A5064;
       border-radius: 5px;
     }
   }
