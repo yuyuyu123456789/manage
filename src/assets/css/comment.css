@@ -1,11 +1,48 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-ul,li{
+
+ul,
+li {
     list-style: none;
 }
-body,html{
+
+body,
+html {
     height: 100%;
     width: 100%;
+}
+
+
+.el-collapse-item__header {
+    display: block !important;
+    width: 50px !important;
+    border: 1px solid #EBEEF5 !important;
+    text-align: center;
+}
+
+.el-collapse {
+    border: none;
+}
+
+.el-table .cell {
+    height: 35px !important;
+    line-height: 35px !important;
+}
+
+.el-table__expand-icon {
+    margin-top: 8px;
+}
+
+.el-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.el-col-5{
+   padding: 0 50px;
+}
+.el-tag {
+    margin-left: 5px;
 }

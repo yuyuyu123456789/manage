@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header>电商后台管理系统 <button>退出</button></el-header>
+    <el-header>电商后台管理系统 <button @click="tiuchu">退出</button></el-header>
     <el-container>
       <el-aside width="250px">
         <div class="san">Ⅲ</div>
@@ -64,7 +64,27 @@ export default {
       this.list = res.data;
     });
   },
-  methods: {},
+  methods: {
+    tiuchu(){
+      this.$confirm('此操作会退出登录, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$router.push("/login");
+          sessionStorage.removeItem("token")
+          this.$message({
+            type: 'success',
+            message: '退出登录成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消退出登录'
+          });          
+        });
+    }
+  },
   components: {},
 };
 </script>
@@ -72,7 +92,8 @@ export default {
 <style scoped lang="scss">
 .el-container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
   .el-header {
     background-color: #373d41;
     font-size: 20px;
@@ -106,6 +127,7 @@ export default {
     }
   }
   .el-main {
+    overflow: auto;
     background-color: #eaedf1;
   }
 }
