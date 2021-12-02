@@ -12,7 +12,7 @@
       <div class="btn">
         <el-button type="primary" @click="is = !is">添加角色</el-button>
       </div>
-      <el-table :data="list" style="width: 100%" border>
+      <el-table :data="list" style="width: 100%" border stripe>
         <!-- 展开列 -->
         <el-table-column type="expand">
           <template slot-scope="props">
@@ -332,8 +332,6 @@ export default {
         .then((res) => {
           // console.log(res.data);
           this.lists = res.data;
-        })
-        .then(() => {
           this.defks = [];
           row.children.filter((arr) => {
             arr.children.filter((item) => {
@@ -342,7 +340,8 @@ export default {
               });
             });
           });
-        });
+        })
+       
     },
     handleChange(val) {
       console.log(val);

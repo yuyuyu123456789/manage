@@ -19,7 +19,7 @@
         <el-button type="primary" @click="is = !is">添加用户</el-button>
       </div>
 
-      <el-table :data="list.users" style="width: 100%" border>
+      <el-table :data="list.users" style="width: 100%" border stripe>
         <el-table-column label="#" width="100">
           <template slot-scope="scope">
             <span>{{ scope.$index + 1 }}</span>
